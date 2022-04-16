@@ -37,7 +37,7 @@ const Carousel = () => {
         ></div>
         <SwiperSlide>
           <div className=" title" data-swiper-parallax="-300">
-            Quotes From
+            Quote From
           </div>
           <div className="subtitle" data-swiper-parallax="-200">
             Opekkha
