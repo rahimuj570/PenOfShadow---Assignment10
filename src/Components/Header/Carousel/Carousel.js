@@ -31,7 +31,7 @@ const Carousel = () => {
           slot="container-start"
           className="parallax-bg bg-right "
           style={{
-            "background-image": `url(${CarouselImg})`,
+            backgroundImage: `url(${CarouselImg})`,
           }}
           data-swiper-parallax="-23%"
         ></div>

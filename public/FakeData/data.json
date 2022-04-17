@@ -1,0 +1,27 @@
+[
+    {
+      "_id": "625be95f76a79bcd726c6939",
+      "price": 5.84,
+      "picture": "./img/creative.jpg",
+      "about": "I Will Write Creative Si-Fi, Horror, Social, Documentary, Historical, Thriller, etc type of Novel and Story."
+    },
+    {
+      "_id": "625be95f7f4296f1c14261fd",
+      "price": 6.98,
+      "picture": "./img/digiatl.jpg",
+      "about": "I Can Provide You Digital Copy or Typewriter Copy of My Creative Work."
+    },
+    {
+      "_id": "625be95fb3f8d038559db61f",
+      "price": 30.22,
+      "picture": "./img/true.jpg",
+      "about": "If You Want to Publish a Documentary, Historical or True Events, I'll Resource and Write the Real Incident."
+    },
+    {
+      "_id": "625be95f1873fdfe0266d260",
+      "price": 9.42,
+      "picture": "./img/hand.jpg",
+      "about": "If You Want to Collect My True Handwritten HardCopy, then I can Provide."
+    }
+    
+  ]
