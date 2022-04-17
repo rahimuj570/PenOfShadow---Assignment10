@@ -15,6 +15,7 @@ import { Route, Routes } from "react-router-dom";
 import Services from "./Components/Services/Services";
 import Footer from "./Components/Footer";
 import ResetPass from "./Components/UserManegment/ResetPass";
+import Carousel from "./Components/Header/Carousel/Carousel";
 
 function App() {
   return (
