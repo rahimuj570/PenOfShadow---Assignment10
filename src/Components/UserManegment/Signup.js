@@ -1,17 +1,40 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import auth from "../../firebase.int";
+import {
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Signup = () => {
   const [showPass, setShowPass] = useState(false);
   const navigate = useNavigate();
   const [customError, setCustomError] = useState({});
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+  const [updateProfile, updating, errorUpdate] = useUpdateProfile(auth);
   return (
     <>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+      {/* Same as */}
+      <ToastContainer />
       <div className="w-full min-h-screen bg-gray-50 flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
         <div className="w-full sm:max-w-md p-5 mx-auto">
           <h2 className="mb-12 text-center text-5xl font-extrabold">Sign Up</h2>
           <form
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
               e.preventDefault();
               const userInfo = {
                 name: e.target.name.value,
@@ -49,6 +72,19 @@ const Signup = () => {
               } else {
                 setCustomError({ confirmPassword: null });
               }
+              await createUserWithEmailAndPassword(
+                userInfo.email,
+                userInfo.password
+              );
+              if (error && errorUpdate) {
+                toast.error("Something Went Wrong!");
+                console.log(error?.code);
+                console.log(errorUpdate?.code);
+                return;
+              }
+              await updateProfile({ displayName: userInfo.name });
+              toast.success("Your Account is Created");
+              navigate("/checkout");
             }}
           >
             <div className="mb-4">
