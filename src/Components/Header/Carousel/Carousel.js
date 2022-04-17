@@ -12,7 +12,7 @@ import { Parallax, Pagination, Navigation } from "swiper";
 import CarouselImg from "./Carousel.jpg";
 const Carousel = () => {
   return (
-    <>
+    <div className="carslider">
       <Swiper
         style={{
           "--swiper-navigation-color": "#fff",
@@ -25,7 +25,7 @@ const Carousel = () => {
         }}
         navigation={true}
         modules={[Parallax, Pagination, Navigation]}
-        className="font-exo mySwiper md:w-3/6 sm:w-4/6 w-6/6 bg-red-500"
+        className=" font-exo mySwiper md:w-3/6 sm:w-4/6 w-6/6 bg-red-500"
       >
         <div
           slot="container-start"
@@ -81,7 +81,7 @@ const Carousel = () => {
           </div>
         </SwiperSlide>
       </Swiper>
-    </>
+    </div>
   );
 };
 
