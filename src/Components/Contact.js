@@ -114,6 +114,15 @@ const Contact = () => {
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
+                  if (
+                    !e.target.name.value ||
+                    !e.target.email.value ||
+                    !e.target.msg.value
+                  ) {
+                    toast.error("Please Input all The Data");
+                    return;
+                  } else {
+                  }
                   toast.success("Successfully Sent Your Message");
                 }}
                 class="p-6 flex flex-col justify-center"
@@ -150,7 +159,7 @@ const Contact = () => {
                   </label>
                   <textarea
                     type="tel"
-                    name="tel"
+                    name="msg"
                     id="tel"
                     placeholder="Your Message"
                     class="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none"

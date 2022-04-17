@@ -13,6 +13,7 @@ import NotFound404 from "./Components/NotFound404";
 import Checkout from "./Components/Checkout";
 import { Route, Routes } from "react-router-dom";
 import Services from "./Components/Services/Services";
+import Footer from "./Components/Footer";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="/checkout" element={<Checkout />}></Route>
         <Route path="*" element={<NotFound404 />}></Route>
       </Routes>
+      <Footer />
     </>
   );
 }
