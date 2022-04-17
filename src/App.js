@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Carousel from "./Components/Header/Carousel/Carousel";
+
 import Header from "./Components/Header/Header";
 
 import Home from "./Components/Home";
@@ -14,12 +14,12 @@ import Checkout from "./Components/Checkout";
 import { Route, Routes } from "react-router-dom";
 import Services from "./Components/Services/Services";
 import Footer from "./Components/Footer";
+import ResetPass from "./Components/UserManegment/ResetPass";
 
 function App() {
   return (
     <>
       <Header />
-      <Carousel />
       <Routes>
         <Route exact path="/" element={<Home />}></Route>
         <Route path="/contact" element={<Home />}></Route>
@@ -29,6 +29,7 @@ function App() {
         <Route path="/about" element={<About />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
+        <Route path="/resetPass" element={<ResetPass />}></Route>
         <Route path="/checkout" element={<Checkout />}></Route>
         <Route path="*" element={<NotFound404 />}></Route>
       </Routes>

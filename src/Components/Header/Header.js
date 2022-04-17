@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaBars } from "react-icons/fa";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { NavHashLink } from "react-router-hash-link";
-import { HashLink } from "react-router-hash-link";
 
 const Header = () => {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
+  const [Show, setShow] = useState("false");
+
   return (
     <>
       <nav className="z-5  flex flex-wrap items-center justify-between px-2 py-3 bg-rose-500 mb-3">
@@ -101,10 +102,10 @@ const Header = () => {
               </li>
               <li className="nav-item">
                 <NavLink
-                  to="login"
+                  to="/login"
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug bg-white text-red-500 rounded hover:shadow-lg duration-200"
                 >
-                  <span className="mx-2">Sign In</span>
+                  <span className="mx-2">Log In</span>
                 </NavLink>
               </li>
             </ul>
