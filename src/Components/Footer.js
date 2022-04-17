@@ -9,7 +9,7 @@ const Footer = () => {
     <>
       <HideScroll variant="down">
         <HashLink to="#top">
-          <FaArrowAltCircleUp className="animate__animated animate__bounce animate__infinite animate__slower animate__delay-3s sticky bottom-12 float-right right-10 opacity-10 hover:opacity-100 duration-200 hover:text-red-500 text-5xl " />
+          <FaArrowAltCircleUp className="animate__animated animate__bounce animate__infinite animate__slower animate__delay-1s sticky bottom-12 float-right right-10 opacity-10 hover:opacity-100 duration-200 hover:text-red-500 text-5xl " />
         </HashLink>
       </HideScroll>
 

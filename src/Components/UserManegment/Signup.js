@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 const Signup = () => {
   const [showPass, setShowPass] = useState(false);
   const navigate = useNavigate();
+  const [customError, setCustomError] = useState({});
   return (
     <>
       <div className="w-full min-h-screen bg-gray-50 flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
@@ -12,6 +13,42 @@ const Signup = () => {
           <form
             onSubmit={(e) => {
               e.preventDefault();
+              const userInfo = {
+                name: e.target.name.value,
+                password: e.target.password.value,
+                email: e.target.email.value,
+                confirmPassword: e.target.confirmPassword.value,
+              };
+              if (
+                !/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+                  userInfo.email
+                )
+              ) {
+                setCustomError({ email: "* Please Input A Valid Email" });
+                return;
+              } else {
+                setCustomError({ email: null });
+              }
+              if (
+                !/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/.test(
+                  userInfo.password
+                )
+              ) {
+                setCustomError({
+                  password:
+                    "* Password Must be Contain With Numeric, Special Symbol, Uppercase, Lowercase and Minimum 6 Characters.",
+                });
+                return;
+              } else {
+                setCustomError({ password: null });
+              }
+              if (userInfo.password !== userInfo.confirmPassword) {
+                setCustomError({
+                  confirmPassword: "* Confirm Password isn't Same.",
+                });
+              } else {
+                setCustomError({ confirmPassword: null });
+              }
             }}
           >
             <div className="mb-4">
@@ -37,6 +74,9 @@ const Signup = () => {
                 name="email"
                 className="py-2 px-3 border border-gray-300 focus:border-red-300 focus:outline-none focus:ring focus:ring-red-200 focus:ring-opacity-50 rounded-md shadow-sm disabled:bg-gray-100 mt-1 block w-full"
               />
+              <p className="text-center text-red-500">
+                {customError?.email && customError?.email}
+              </p>
             </div>
             <div className="mb-4">
               <label className="block mb-1" htmlFor="password">
@@ -49,6 +89,9 @@ const Signup = () => {
                 name="password"
                 className="py-2 px-3 border border-gray-300 focus:border-red-300 focus:outline-none focus:ring focus:ring-red-200 focus:ring-opacity-50 rounded-md shadow-sm disabled:bg-gray-100 mt-1 block w-full"
               />
+              <p className="text-center text-red-500">
+                {customError?.password && customError?.password}
+              </p>
             </div>
             <div className="mb-4">
               <label className="block mb-1" htmlFor="confirmPassword">
@@ -61,6 +104,9 @@ const Signup = () => {
                 name="confirmPassword"
                 className="py-2 px-3 border border-gray-300 focus:border-red-300 focus:outline-none focus:ring focus:ring-red-200 focus:ring-opacity-50 rounded-md shadow-sm disabled:bg-gray-100 mt-1 block w-full"
               />
+              <p className="text-center text-red-500">
+                {customError?.confirmPassword && customError?.confirmPassword}
+              </p>
             </div>
             <div className="mt-6 flex items-center justify-between">
               <div className="flex items-center">
