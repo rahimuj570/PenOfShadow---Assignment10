@@ -1,20 +1,22 @@
 import React from "react";
 import { FaBars } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { NavHashLink } from "react-router-hash-link";
+import { HashLink } from "react-router-hash-link";
 
 const Header = () => {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   return (
     <>
-      <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-rose-500 mb-3">
+      <nav className="z-5  flex flex-wrap items-center justify-between px-2 py-3 bg-rose-500 mb-3">
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
-            <Link
+            <NavLink
               to="/"
               className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
             >
               Pen of Shadow
-            </Link>
+            </NavLink>
             <button
               className="hover:bg-red-600 duration-200 text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
               type="button"
@@ -32,45 +34,78 @@ const Header = () => {
           >
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
               <li className="nav-item">
-                <Link
+                <NavLink
+                  style={({ isActive }) => {
+                    return {
+                      color: isActive ? "red" : "",
+                    };
+                  }}
                   to="/"
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
                 >
                   <span className="ml-2">Home</span>
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link
-                  to="/#services"
+                <NavHashLink
+                  style={({ isActive }) => {
+                    return {
+                      color: isActive ? "red" : "",
+                    };
+                  }}
+                  to="/services#services"
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
                 >
                   <span className="ml-2">Services</span>
-                </Link>
+                </NavHashLink>
               </li>
               <li className="nav-item">
-                <Link
+                <NavLink
+                  style={({ isActive }) => {
+                    return {
+                      color: isActive ? "red" : "",
+                    };
+                  }}
                   to="/blogs"
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
                 >
                   <i className="fab fa-twitter text-lg leading-lg text-white opacity-75"></i>
                   <span className="ml-2">Blogs</span>
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link
+                <NavLink
+                  style={({ isActive }) => {
+                    return {
+                      color: isActive ? "red" : "",
+                    };
+                  }}
                   to="/about"
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
                 >
                   <span className="mr-2">About</span>
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link
+                <NavHashLink
+                  style={({ isActive }) => {
+                    return {
+                      color: isActive ? "#ffa8a8" : "",
+                    };
+                  }}
+                  to="/contact#contact"
+                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                >
+                  <span className="mr-2">Contact</span>
+                </NavHashLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
                   to="login"
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug bg-white text-red-500 rounded hover:shadow-lg duration-200"
                 >
                   <span className="mx-2">Sign In</span>
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </div>

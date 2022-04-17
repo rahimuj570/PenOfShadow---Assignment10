@@ -21,7 +21,9 @@ function App() {
       <Header />
       <Carousel />
       <Routes>
-        <Route path="/" element={<Home />}></Route>
+        <Route exact path="/" element={<Home />}></Route>
+        <Route path="/contact" element={<Home />}></Route>
+        <Route path="/services" element={<Home />}></Route>
         <Route path="/services" element={<Services />}></Route>
         <Route path="/blogs" element={<Blogs />}></Route>
         <Route path="/about" element={<About />}></Route>
