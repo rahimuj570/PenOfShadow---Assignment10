@@ -1,12 +1,15 @@
+import { signOut } from "firebase/auth";
 import React, { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { FaBars } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { NavHashLink } from "react-router-hash-link";
+import auth from "../../firebase.int";
 
 const Header = () => {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   const [Show, setShow] = useState("false");
-
+  const [user, loading, error] = useAuthState(auth);
   return (
     <>
       <nav className="z-5  flex flex-wrap items-center justify-between px-2 py-3 bg-rose-500 mb-3">
@@ -104,12 +107,21 @@ const Header = () => {
                 </NavHashLink>
               </li>
               <li className="nav-item">
-                <NavLink
-                  to="/login"
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug bg-white text-red-500 rounded hover:shadow-lg duration-200"
-                >
-                  <span className="mx-2">Log In</span>
-                </NavLink>
+                {user ? (
+                  <button
+                    onClick={() => signOut(auth)}
+                    className="btn px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug bg-white text-red-500 rounded hover:shadow-lg duration-200"
+                  >
+                    <span className="mx-2">Log Out</span>
+                  </button>
+                ) : (
+                  <NavLink
+                    to={"/login"}
+                    className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug bg-white text-red-500 rounded hover:shadow-lg duration-200"
+                  >
+                    <span className="mx-2">Log In</span>
+                  </NavLink>
+                )}
               </li>
             </ul>
           </div>
