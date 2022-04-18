@@ -42,39 +42,33 @@ const Header = () => {
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
               <li className="nav-item">
                 <NavLink
-                  style={({ isActive }) => {
-                    return {
-                      opacity: isActive ? ".6" : "",
-                    };
-                  }}
+                  className={({ isActive }) =>
+                    (isActive ? "opacity-50 " : "") +
+                    "px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                  }
                   to="/"
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
                 >
                   <span className="ml-2">Home</span>
                 </NavLink>
               </li>
               <li className="nav-item">
                 <NavHashLink
-                  style={({ isActive }) => {
-                    return {
-                      opacity: isActive ? ".6" : "",
-                    };
-                  }}
                   to="/services#services"
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                  className={({ isActive }) =>
+                    (isActive ? "opacity-50 " : "") +
+                    "px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                  }
                 >
                   <span className="ml-2">Services</span>
                 </NavHashLink>
               </li>
               <li className="nav-item">
                 <NavLink
-                  style={({ isActive }) => {
-                    return {
-                      opacity: isActive ? ".6" : "",
-                    };
-                  }}
                   to="/blogs"
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                  className={({ isActive }) =>
+                    (isActive ? "opacity-50 " : "") +
+                    "px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                  }
                 >
                   <i className="fab fa-twitter text-lg leading-lg text-white opacity-75"></i>
                   <span className="ml-2">Blogs</span>
@@ -82,26 +76,22 @@ const Header = () => {
               </li>
               <li className="nav-item">
                 <NavLink
-                  style={({ isActive }) => {
-                    return {
-                      opacity: isActive ? ".6" : "",
-                    };
-                  }}
                   to="/about"
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                  className={({ isActive }) =>
+                    (isActive ? "opacity-50 " : "") +
+                    "px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                  }
                 >
                   <span className="mr-2">About</span>
                 </NavLink>
               </li>
               <li className="nav-item">
                 <NavHashLink
-                  style={({ isActive }) => {
-                    return {
-                      color: isActive ? "#ffa8a8" : "",
-                    };
-                  }}
                   to="/contact#contact"
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                  className={({ isActive }) =>
+                    (isActive ? "opacity-50 " : "") +
+                    "px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                  }
                 >
                   <span className="mr-2">Contact</span>
                 </NavHashLink>
@@ -117,7 +107,9 @@ const Header = () => {
                 ) : (
                   <NavLink
                     to={"/login"}
-                    className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug bg-white text-red-500 rounded hover:shadow-lg duration-200"
+                    className={
+                      "btn px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug bg-white text-red-500 rounded hover:shadow-lg duration-200"
+                    }
                   >
                     <span className="mx-2">Log In</span>
                   </NavLink>

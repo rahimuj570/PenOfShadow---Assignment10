@@ -61,6 +61,7 @@ const Checkout = () => {
                 <form
                   onSubmit={(e) => {
                     e.preventDefault();
+                    toast.success("Thank You For The Booking.");
                     toast.success("I Will Contact You Soon.");
                     setTimeout(() => navigate("/"), 5000);
                   }}
