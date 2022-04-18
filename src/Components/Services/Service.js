@@ -28,7 +28,7 @@ const Service = ({ service }) => {
         </div>
         <div className="mt-4">
           <button
-            onClick={() => navigate("/checkout")}
+            onClick={() => navigate(`/checkout/${_id}`)}
             className="bg-red-500 text-white rounded py-1 px-2 font-semibold font-exo text-lg hover:bg-white hover:text-red-500 hover:shadow duration-300"
           >
             Let's Buy

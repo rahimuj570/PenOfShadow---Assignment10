@@ -1,12 +1,14 @@
 import React from "react";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { FcGoogle } from "react-icons/fc";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.int";
 
 const SocialSignin = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   const navigate = useNavigate();
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
 
   return (
     <>
@@ -15,11 +17,11 @@ const SocialSignin = () => {
         <div className="font-bold text-2xl">OR</div>
         <div className="rounded-lg w-2/6 mx-auto h-1 bg-red-500"></div>
       </div>
-      <div className="mt-5 flex flex-col">
+      <div className="pb-5 mt-5 flex flex-col">
         <div
           onClick={async () => {
             await signInWithGoogle();
-            navigate("/checkout");
+            navigate(from, { replace: true });
           }}
           className="flex items-center shadow-md hover:shadow-lg bg-white p-2 rounded-lg cursor-pointer"
         >

@@ -15,7 +15,6 @@ import { Route, Routes } from "react-router-dom";
 import Services from "./Components/Services/Services";
 import Footer from "./Components/Footer";
 import ResetPass from "./Components/UserManegment/ResetPass";
-import Carousel from "./Components/Header/Carousel/Carousel";
 import RequireAuth from "./Components/Header/RequireAuth";
 
 function App() {
@@ -33,7 +32,7 @@ function App() {
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/resetPass" element={<ResetPass />}></Route>
         <Route
-          path="/checkout"
+          path="/checkout/:name"
           element={
             <RequireAuth>
               <Checkout />{" "}

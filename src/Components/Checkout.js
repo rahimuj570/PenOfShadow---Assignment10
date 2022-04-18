@@ -46,8 +46,6 @@ const Checkout = () => {
       </>
     );
   }
-  // {loading && console.log("loading")}
-  // <h1>{user?.displayName}</h1>
 };
 
 export default Checkout;

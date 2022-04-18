@@ -8,6 +8,7 @@ import {
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loading from "./Loading";
+import SocialSignin from "./SocialSignin";
 
 const Signup = () => {
   const [showPass, setShowPass] = useState(false);
@@ -182,6 +183,7 @@ const Signup = () => {
             </div>
           </form>
         </div>
+        <SocialSignin />
       </div>
     </>
   );
