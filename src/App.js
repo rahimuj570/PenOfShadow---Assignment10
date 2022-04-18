@@ -32,7 +32,7 @@ function App() {
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/resetPass" element={<ResetPass />}></Route>
         <Route
-          path="/checkout/:name"
+          path="/checkout/:id"
           element={
             <RequireAuth>
               <Checkout />{" "}

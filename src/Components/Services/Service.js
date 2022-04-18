@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 const Service = ({ service }) => {
   const { _id, picture, price, name, about } = service;
   const navigate = useNavigate();
+
   return (
     <div className="my-3 rounded-lg shadow mx-2 hover:shadow-lg duration-300 p-2 ">
       <div className="w-6/6 h-60 mx-auto mt-2 mb-4">
@@ -28,7 +29,9 @@ const Service = ({ service }) => {
         </div>
         <div className="mt-4">
           <button
-            onClick={() => navigate(`/checkout/${_id}`)}
+            onClick={() => {
+              navigate(`/checkout/${_id}`);
+            }}
             className="bg-red-500 text-white rounded py-1 px-2 font-semibold font-exo text-lg hover:bg-white hover:text-red-500 hover:shadow duration-300"
           >
             Let's Buy
