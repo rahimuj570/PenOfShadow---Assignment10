@@ -1,19 +1,52 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSendPasswordResetEmail } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import auth from "../../firebase.int";
+import Loading from "./Loading";
 
 const ResetPass = () => {
   const [showPass, setShowPass] = useState(false);
   const navigate = useNavigate();
+  const [sendPasswordResetEmail, sending, error] =
+    useSendPasswordResetEmail(auth);
+  const [click, setClick] = useState(false);
+  useEffect(() => {
+    if (error) {
+      toast.error("User Not Found. Please Input Valid Email.");
+      console.log(error.message);
+    }
+    if (sending) {
+      toast.success("Loading...");
+    }
+    if (!error) {
+      toast.success("Please Check Your Email");
+    }
+  }, [click]);
+
   return (
-    <div>
+    <>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <div className="w-full min-h-screen bg-gray-50 flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
         <div className="w-full sm:max-w-md p-5 mx-auto">
           <h2 className="mb-12 text-center text-5xl font-extrabold">
             Reset Password
           </h2>
           <form
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
               e.preventDefault();
+              await sendPasswordResetEmail(e.target.email.value);
+              setClick(!click);
             }}
           >
             <div className="mb-4">
@@ -58,7 +91,7 @@ const ResetPass = () => {
           </form>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
