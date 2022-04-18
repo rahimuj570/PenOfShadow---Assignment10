@@ -41,7 +41,7 @@ const Header = () => {
                 <NavLink
                   style={({ isActive }) => {
                     return {
-                      color: isActive ? "red" : "",
+                      opacity: isActive ? ".6" : "",
                     };
                   }}
                   to="/"
@@ -54,7 +54,7 @@ const Header = () => {
                 <NavHashLink
                   style={({ isActive }) => {
                     return {
-                      color: isActive ? "red" : "",
+                      opacity: isActive ? ".6" : "",
                     };
                   }}
                   to="/services#services"
@@ -67,7 +67,7 @@ const Header = () => {
                 <NavLink
                   style={({ isActive }) => {
                     return {
-                      color: isActive ? "red" : "",
+                      opacity: isActive ? ".6" : "",
                     };
                   }}
                   to="/blogs"
@@ -81,7 +81,7 @@ const Header = () => {
                 <NavLink
                   style={({ isActive }) => {
                     return {
-                      color: isActive ? "red" : "",
+                      opacity: isActive ? ".6" : "",
                     };
                   }}
                   to="/about"
