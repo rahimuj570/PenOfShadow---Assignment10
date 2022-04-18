@@ -16,6 +16,7 @@ const About = () => {
           <img className=" w-full" src="me.jpg" alt="" />
         </div>
         <div className="text-center mx-6 rounded p-2 mt-5 shadow font-exo text-base">
+          <p className="m-1 font-bold text-xl">Md. Rahimujjaman Rahim</p>
           My Goal of 2022 is become an enough Good MERN developer. <br />
           Then I'll do a Job and bare my University fees and gift my Mom and Dad
           every month. <br />

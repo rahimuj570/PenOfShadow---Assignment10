@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.int";
 import {
   useCreateUserWithEmailAndPassword,
@@ -17,10 +17,13 @@ const Signup = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   const [updateProfile, updating, errorUpdate] = useUpdateProfile(auth);
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
 
   if (loading) {
     return <Loading />;
   }
+
   return (
     <>
       <ToastContainer
@@ -90,7 +93,7 @@ const Signup = () => {
               }
               await updateProfile({ displayName: userInfo.name });
               toast.success("Your Account is Created");
-              navigate("/checkout");
+              navigate(from, { replace: true });
             }}
           >
             <div className="mb-4">
