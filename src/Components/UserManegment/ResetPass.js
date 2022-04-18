@@ -1,28 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { useSendPasswordResetEmail } from "react-firebase-hooks/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import auth from "../../firebase.int";
-import Loading from "./Loading";
 
 const ResetPass = () => {
-  const [showPass, setShowPass] = useState(false);
-  const navigate = useNavigate();
   const [sendPasswordResetEmail, sending, error] =
     useSendPasswordResetEmail(auth);
   const [click, setClick] = useState(false);
-  useEffect(() => {
-    if (error) {
-      toast.error("User Not Found. Please Input Valid Email.");
-      console.log(error.message);
-    }
-    if (!error) {
-      toast.success("Please Check Your Email");
-    }
-  }, [click]);
-  // if (sending) {
-  //   toast.info("Loading...");
-  // }
+
+  if (error?.code === "auth/user-not-found") {
+    toast.error("User Not Found. Please Input Valid Email.");
+    console.log(error?.code);
+  } else if (error?.code === "auth/too-many-requests") {
+    toast.error(
+      "Your Limit of Reset Password is Over. Please Try Again Later."
+    );
+  } else if (!error) {
+    toast.success("Check Your Email");
+  }
+
   return (
     <>
       <ToastContainer
@@ -80,25 +77,12 @@ const ResetPass = () => {
                 )}
               </div>
             </div>
-            <div className="mt-6 flex items-center justify-between">
-              <div className="flex items-center">
-                <input
-                  onClick={() => setShowPass(!showPass)}
-                  id="remember_me"
-                  type="checkbox"
-                  className="border border-gray-300 text-red-600 shadow-sm focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50"
-                />
-                <label
-                  htmlFor="remember_me"
-                  className="ml-2 block text-sm leading-5 text-gray-900"
-                >
-                  {" "}
-                  Confirm The Email Address.
-                </label>
-              </div>
-            </div>
+
             <div className="mt-6">
-              <button className="w-full inline-flex items-center justify-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold capitalize text-white hover:bg-red-700 active:bg-red-700 focus:outline-none focus:border-red-700 focus:ring focus:ring-red-200 disabled:opacity-25 transition">
+              <button
+                type="submit"
+                className="w-full inline-flex items-center justify-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold capitalize text-white hover:bg-red-700 active:bg-red-700 focus:outline-none focus:border-red-700 focus:ring focus:ring-red-200 disabled:opacity-25 transition"
+              >
                 Reset Password
               </button>
             </div>

@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import auth from "../../firebase.int";
 import Loading from "./Loading";
+import SocialSignin from "./SocialSignin";
 
 const Login = () => {
   const [showPass, setShowPass] = useState(false);
@@ -256,6 +257,7 @@ const Login = () => {
             </div>
           </form>
         </div>
+        <SocialSignin />
       </div>
     </>
   );
