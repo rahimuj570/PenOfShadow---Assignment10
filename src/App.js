@@ -16,6 +16,7 @@ import Services from "./Components/Services/Services";
 import Footer from "./Components/Footer";
 import ResetPass from "./Components/UserManegment/ResetPass";
 import Carousel from "./Components/Header/Carousel/Carousel";
+import RequireAuth from "./Components/Header/RequireAuth";
 
 function App() {
   return (
@@ -31,7 +32,14 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/resetPass" element={<ResetPass />}></Route>
-        <Route path="/checkout" element={<Checkout />}></Route>
+        <Route
+          path="/checkout"
+          element={
+            <RequireAuth>
+              <Checkout />{" "}
+            </RequireAuth>
+          }
+        ></Route>
         <Route path="*" element={<NotFound404 />}></Route>
       </Routes>
       <Footer />

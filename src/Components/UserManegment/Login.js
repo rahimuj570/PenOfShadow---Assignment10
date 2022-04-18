@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import auth from "../../firebase.int";
 import Loading from "./Loading";
@@ -13,6 +13,8 @@ const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
   // ======== Condition ========
   if (error) {
     if (error?.code === "auth/invalid-email") {
@@ -77,7 +79,7 @@ const Login = () => {
                 }
 
                 signInWithEmailAndPassword(userInfo.email, userInfo.password);
-                error || navigate("/");
+                navigate(from, { replace: true });
               }}
             >
               <div className="mb-4">
@@ -151,7 +153,7 @@ const Login = () => {
     return <Loading />;
   }
   if (user) {
-    navigate("/checkout");
+    navigate(from, { replace: true });
   }
   return (
     <>
