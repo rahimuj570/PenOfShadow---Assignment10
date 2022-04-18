@@ -7,6 +7,7 @@ import {
 } from "react-firebase-hooks/auth";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Loading from "./Loading";
 
 const Signup = () => {
   const [showPass, setShowPass] = useState(false);
@@ -15,6 +16,10 @@ const Signup = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   const [updateProfile, updating, errorUpdate] = useUpdateProfile(auth);
+
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <>
       <ToastContainer
